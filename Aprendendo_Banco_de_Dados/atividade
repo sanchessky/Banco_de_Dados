@@ -44,3 +44,14 @@ ALTER TABLE agenda
 ADD CONSTRAINT `fk_agenda_pk_medico`
 FOREIGN KEY agenda(`medico`)
 REFERENCES medico(id_medico);
+
+
+
+SELECT pac.nome_paciente, med.nome_medico,
+		ag.especialidade,
+		ag.data_consulta, 
+		ag.hora_consulta
+FROM paciente pac INNER JOIN agenda ag 
+ON pac.id_paciente = ag.paciente 
+INNER JOIN medico med ON med.id_medico = ag.medico
+WHERE pac.id_paciente = 2;
