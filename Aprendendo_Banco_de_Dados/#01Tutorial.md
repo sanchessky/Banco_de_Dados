@@ -1,6 +1,12 @@
-Claro! Aqui está o conteúdo completo em **Markdown**:
+Autor: Thiago Sanches<br>
+Instagram: https://www.instagram.com/espetacular_sanches<br>
+LinkedIn Thiago Sanches: https://www.linkedin.com/in/thiagosanches07/<br>
+Github: https://github.com/sanchessky<br>
+Data de criação: 21/02/2025<br>
+Atualização:
 
-```markdown
+
+
 # **Tutorial de Banco de Dados - Aprendendo DML**
 
 ## **Introdução ao DML (Data Manipulation Language)**
@@ -21,7 +27,7 @@ Essas operações são conhecidas como **CRUD**:
 
 Neste tutorial, vamos aprender como realizar essas operações em um banco de dados fictício que gerencia informações de **clientes**, **contatos**, **endereços**, **fornecedores**, **produtos**, **categorias**, e **estoque**.
 
----
+
 
 ## **1. Selecionando o Banco de Dados**
 
