@@ -268,3 +268,143 @@ Finalmente, estamos inserindo dados na tabela **`estoque`**. Estamos associando 
 
 ---
 
+Aqui está a explicação passo a passo sobre o processo de inserção e atualização de dados nas tabelas de um sistema de vendas em um banco de dados relacional, com a descrição de cada tabela e inserção de dados, usando SQL:
+
+```markdown
+# Processo de Cadastro e Venda no Sistema
+
+## Cadastro do Cargo
+
+Primeiramente, é necessário cadastrar o cargo do funcionário. Para isso, utilizamos a tabela `cargos`. O comando SQL para verificar a estrutura da tabela `cargos` é:
+
+```sql
+DESC cargos;
+```
+
+Em seguida, podemos inserir um cargo no banco de dados:
+
+```sql
+INSERT INTO cargos(funcao, salario, descricao_cargos, beneficios)
+    VALUES("Operador de Caixa", 2500.99, "Atender os Clientes", "Vale Transporte, Vale Refeição");
+```
+
+Depois de inserir o cargo, podemos verificar os dados inseridos na tabela `cargos`:
+
+```sql
+SELECT * FROM cargos;
+```
+
+## Cadastro de Contato e Endereço do Funcionário
+
+Antes de cadastrar o funcionário, é necessário registrar os dados de **contato** e **endereço**. 
+
+## Cadastro do Funcionário
+
+A tabela `funcionario` precisa ser descrita para ver sua estrutura. Para isso, utilizamos o comando:
+
+```sql
+DESC funcionario;
+```
+
+Agora, podemos inserir dados na tabela `funcionario`:
+
+```sql
+INSERT INTO funcionario(nome_funcionario, cpf_funcionario, data_nascimento_funcionario, horario_expediente, cargos, contato, endereco)
+    VALUES("Oliveira Sanches", "545.478.558-77", "1989-10-02", "08:00 às 17:00", 1, 3, 3);
+```
+
+Após inserir o funcionário, podemos verificar se os dados foram corretamente registrados:
+
+```sql
+SELECT * FROM funcionario;
+```
+
+## Cadastro da Venda
+
+Com o cargo e funcionário cadastrados, podemos realizar a venda. A tabela `venda` contém as informações sobre cada transação de venda. Para visualizar a estrutura da tabela, utilizamos:
+
+```sql
+DESC venda;
+```
+
+Agora podemos registrar a venda, associando um cliente e um funcionário:
+
+```sql
+INSERT INTO venda(cliente, funcionario)
+    VALUES(1, 1);
+```
+
+Para verificar se a venda foi registrada corretamente:
+
+```sql
+SELECT * FROM venda;
+```
+
+## Detalhamento dos Itens da Venda
+
+Após registrar a venda, podemos adicionar os itens vendidos. A tabela `itensvenda` armazena os detalhes de cada item na venda. Para ver sua estrutura, usamos o comando:
+
+```sql
+DESC itensvenda;
+```
+
+Agora podemos inserir os itens vendidos:
+
+```sql
+INSERT INTO itensvenda(venda, produto, quantidade_vendida, total)
+    VALUES(1, 1, 12, 840);
+```
+
+Após inserir os itens, podemos verificar os dados na tabela `itensvenda`:
+
+```sql
+SELECT * FROM itensvenda;
+```
+
+### Cálculo do Total da Venda
+
+Para calcular o total da venda, podemos usar a função de soma:
+
+```sql
+SELECT sum(total) FROM itensvenda;
+```
+
+### Atualização do Subtotal na Tabela de Venda
+
+Se necessário, podemos atualizar o valor do subtotal da venda:
+
+```sql
+UPDATE venda SET subtotal = 1099.60 WHERE id_venda = 1;
+```
+
+Após a atualização, podemos verificar os dados atualizados:
+
+```sql
+SELECT * FROM venda;
+```
+
+## Registro do Pagamento
+
+Agora que a venda foi registrada e o subtotal atualizado, podemos registrar o pagamento. Para ver a estrutura da tabela `pagamento`, usamos:
+
+```sql
+DESC pagamento;
+```
+
+Em seguida, registramos o pagamento, incluindo a forma de pagamento, valor a pagar, número de parcelas, valor por parcela e o troco (se houver):
+
+```sql
+INSERT INTO pagamento(venda, forma_pagamento, valor_pagar, parcelas, valor_parcela, troco)
+    VALUES(1, "Pix", 1099.60, 1, 1099.60, 0);
+```
+
+Por fim, para verificar o pagamento registrado:
+
+```sql
+SELECT * FROM pagamento;
+```
+
+---
+
+Este processo abrange desde o cadastro do cargo do funcionário até o registro da venda e do pagamento, proporcionando uma visão geral do fluxo de dados em um sistema de vendas.
+```
