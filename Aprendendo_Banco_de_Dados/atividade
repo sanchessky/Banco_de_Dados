@@ -1,0 +1,46 @@
+-- Criando o banco de dados "clinica"
+CREATE DATABASE clinica;
+
+-- Usando o banco de dados "clinica"
+USE clinica;
+
+-- Tabela para armazenar os dados dos pacientes
+CREATE TABLE paciente (
+    id_paciente INT AUTO_INCREMENT PRIMARY KEY,        -- Identificador único do paciente
+    nome_paciente VARCHAR(50) NOT NULL,                 -- Nome do paciente
+    cpf_paciente VARCHAR(15) NOT NULL UNIQUE,           -- CPF do paciente (único)
+    email_paciente VARCHAR(100) NOT NULL UNIQUE,        -- E-mail do paciente (único)
+    telefone_paciente VARCHAR(20) NOT NULL              -- Telefone do paciente
+);
+
+-- Tabela para armazenar os dados dos médicos
+CREATE TABLE medico (
+    id_medico INT AUTO_INCREMENT PRIMARY KEY,          -- Identificador único do médico
+    nome_medico VARCHAR(50) NOT NULL,                   -- Nome do médico
+    crm VARCHAR(15) NOT NULL UNIQUE,                    -- CRM do médico (único)
+    email_medico VARCHAR(100) NOT NULL UNIQUE,          -- E-mail do médico (único)
+    telefone_medico VARCHAR(20) NOT NULL                -- Telefone do médico
+);
+
+-- Tabela para armazenar as agendas de consultas
+CREATE TABLE agenda (
+    id_agenda INT AUTO_INCREMENT PRIMARY KEY,          -- Identificador único da agenda
+    paciente INT NOT NULL,                              -- Relacionamento com o paciente (id do paciente)
+    medico INT NOT NULL,                                -- Relacionamento com o médico (id do médico)
+    especialidade VARCHAR(30) NOT NULL,                 -- Especialidade médica
+    data_consulta DATE NOT NULL,                        -- Data da consulta
+    hora_consulta TIME NOT NULL,                        -- Hora da consulta
+    observacao TEXT NOT NULL                        -- Observações adicionais sobre a consulta
+);
+
+
+
+ALTER TABLE agenda
+ADD CONSTRAINT `fk_agenda_pk_paciente`
+FOREIGN KEY agenda(`paciente`)
+REFERENCES paciente(id_paciente);
+
+ALTER TABLE agenda
+ADD CONSTRAINT `fk_agenda_pk_medico`
+FOREIGN KEY agenda(`medico`)
+REFERENCES medico(id_medico);
