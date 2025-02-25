@@ -1,9 +1,9 @@
 Autor: Thiago Sanches<br>
-Instagram: https://www.instagram.com/espetacular_sanches<br>
+Instagram: https://www.instagram.com/tecnologia_do_sanches<br>
 LinkedIn Thiago Sanches: https://www.linkedin.com/in/thiagosanches07/<br>
 Github: https://github.com/sanchessky<br>
 Data de criação: 21/02/2025<br>
-Atualização:
+Atualização: 25/02/2025<br>
 
 
 
