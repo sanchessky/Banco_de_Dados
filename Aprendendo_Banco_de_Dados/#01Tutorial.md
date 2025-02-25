@@ -404,6 +404,6 @@ Por fim, para verificar o pagamento registrado:
 SELECT * FROM pagamento;
 ```
 
----
+
 
 Este processo abrange desde o cadastro do cargo do funcionário até o registro da venda e do pagamento, proporcionando uma visão geral do fluxo de dados em um sistema de vendas.
