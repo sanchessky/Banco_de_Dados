@@ -1,0 +1,22 @@
+{
+  "name": "crud-mongodb",
+  "version": "1.0.0",
+  "description": "Tutorial MongoDB",
+  "main": "main.js",
+  "scripts": {
+    "start": "nodemon"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sanchessky/Banco_de_Dados.git"
+  },
+  "author": "Thiago Sanches",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sanchessky/Banco_de_Dados/issues"
+  },
+  "homepage": "https://github.com/sanchessky/Banco_de_Dados#readme",
+  "dependencies": {
+    "mongoose": "^8.12.1"
+  }
+}

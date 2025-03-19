@@ -1,3 +1,9 @@
+Autor: Thiago Sanches<br>
+Instagram: https://www.instagram.com/espetacular_sanches<br>
+LinkedIn Thiago Sanches: https://www.linkedin.com/in/thiagosanches07/<br>
+Github: https://github.com/sanchessky<br>
+Data de criação: 17/03/2025<br>
+Atualizaçaõ: 19/03/2025 <br>
 
 
 ### Tutorial MongoDB com Node.js e Mongoose
@@ -68,9 +74,9 @@ const conectar = async () => {
   if (!conectado) {
     try {
       // Conectar ao banco de dados
-      await mongoose.connect(url);
+      await mongoose.connect(url)
       conectado = true; // Definir a variável como conectada
-      console.log("MongoDB conectado");
+      console.log("MongoDB conectado")
     } catch (error) {
       console.log("Erro ao conectar ao MongoDB:", error)
     }
@@ -102,7 +108,7 @@ module.exports = { conectar, desconectar }
 O Mongoose é importado no início para facilitar a conexão com o banco de dados.
 
 ```javascript
-const mongoose = require('mongoose');
+const mongoose = require('mongoose')
 ```
 
 **2. Definição da URL de Conexão:**
@@ -333,7 +339,12 @@ const salvarCliente = async (nomeCli, foneCli, cpfCli) => {
         await novoCliente.save()
         console.log("Cliente adicionado com sucesso")
     } catch (error) {
-        console.log(error)
+        //Tratamento personalizado das exceções
+        if (error.code = 11000) {
+            console.log(`Erro: O  CPF ${cpfCli} ja está cadastrado`)
+        } else {
+            console.log
+        }
     }
 }
 ```
@@ -352,21 +363,20 @@ const salvarCliente = async (nomeCli, foneCli, cpfCli) => {
 ```javascript
 //===============Função Principal=====================
 const iniciarsistema = async () => {
-    try {
-        console.clear(); // Limpa o console para exibir as novas mensagens
-        console.log("estudo do MongoDB"); // Exibe uma mensagem no console
-        console.log("-----------------------------------");
+        console.clear() // Limpa o console para exibir as novas mensagens
+        console.log("estudo do MongoDB") // Exibe uma mensagem no console
+        console.log("-----------------------------------")
 
         // Conectando ao banco de dados
-        await conectar();
+        await conectar()
 
         // Realizando a operação CRUD: Salvando o cliente
         await salvarCliente("Thiago", "4002-8922", "12345678900");
 
     
-        await desconectar();   
+        await desconectar()  
 }
 
 
-iniciarsistema();
+iniciarsistema()
 
