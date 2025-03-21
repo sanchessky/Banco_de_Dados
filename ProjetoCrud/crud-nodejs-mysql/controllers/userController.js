@@ -4,15 +4,15 @@ const bcrypt = require("bcrypt")
 exports.createUser = (req, res) => {
     const { nome_usuario, email_usuario, senha_usuario } = req.body; // Desestruturação das variáveis do corpo da requisição
 
-    bcrypt.hash(senha_usuario, 10, (err, hashedPassword) => {
+    bcrypt.hash(senha_usuario, 10, (err, result) => {
         if (err) return res.status(500).send(err); 
 
         const sql = 'INSERT INTO usuarios (nome_usuario, email_usuario, senha_usuario) VALUES(?, ?, ?)';
         
-        db.query(sql, [nome_usuario, email_usuario, hashedPassword], (err, result) => {
-            if (err) return res.status(500).send(err); // Retorna erro se a inserção falhar
+        db.query(sql, [nome_usuario, email_usuario, result], (err, result) => {
+            if (err) return res.status(500).send(err)
             
-            // Retorna o id, nome e email do usuário, mas **não** a senha
+        
             res.status(201).json({ id: result.insertId, nome_usuario, email_usuario });
         });
     });
@@ -45,10 +45,10 @@ exports.loginUser = (req, res) => {const { usuario, senha } = req.body;
 
     con.query("SELECT * FROM usuarios WHERE nome_usuario = ?", [usuario], (error, result) => {
         if (error) {
-            return res.status(500).send({ msg: `Erro ao tentar logar: ${error.message}` });
+            return res.status(500).send({ msg: `Erro ao tentar logar: ` });
         }
 
-        if (result === 0) {
+        if (result[0] == null) {
             return res.status(400).send({ msg: 'Usuário ou senha errada' });
         }
 
